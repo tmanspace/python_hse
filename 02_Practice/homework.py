@@ -1,3 +1,4 @@
+from datetime import datetime
 
 # Task 1
 # word = test Результат: es
@@ -51,3 +52,18 @@ print(get_queries_dis_str(queries))
 # Результат:
 # Поисковых запросов, содержащих 2 слов(а): 42.86%
 # Поисковых запросов, содержащих 3 слов(а): 57.14%
+
+def parse_date_moscow_times(date_str: str) -> datetime:
+    return datetime.strptime(date_str, "%A, %B %d, %Y")
+
+def parse_date_guardian(date_str: str) -> datetime:
+    return datetime.strptime(date_str, "%A, %d.%m.%y")
+
+def parse_date_daily_news(date_str: str) -> datetime:
+    return datetime.strptime(date_str, "%A, %d %B %Y")
+
+moscow_times_date = parse_date_moscow_times("Wednesday, October 2, 2002")
+guardian_date = parse_date_guardian("Friday, 11.10.13")
+daily_news_date = parse_date_daily_news("Thursday, 18 August 1977")
+
+print(moscow_times_date, guardian_date, daily_news_date)
